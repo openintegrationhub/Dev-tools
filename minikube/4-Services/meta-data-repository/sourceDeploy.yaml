@@ -17,7 +17,7 @@ spec:
         - name: meta-data-repository
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w services/meta-data-repository"]
+          args: ["-c", "npm run start:container -w ${OIH_ROOT}/meta-data-repository"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3000

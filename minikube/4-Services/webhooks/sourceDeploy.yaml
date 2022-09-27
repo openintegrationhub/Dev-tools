@@ -23,8 +23,8 @@ spec:
         - name: webhooks
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w services/webhooks"]
-          #npm ci --verbose --non-interactive -w services/webhooks &&
+          args: ["-c", "npm run start:container -w ${OIH_ROOT}/webhooks"]
+          #npm ci --verbose --non-interactive -w ${OIH_ROOT}/webhooks &&
           workingDir: /usr/src/app/
           env:
             - name: IAM_TOKEN
@@ -61,7 +61,7 @@ spec:
           volumeMounts:
             - name: code
               mountPath: /usr/src/app
-              #subPath: services/webhooks
+              #subPath: ${OIH_ROOT}/webhooks
           livenessProbe:
             httpGet:
               port: 1234

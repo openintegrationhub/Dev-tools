@@ -20,7 +20,7 @@ spec:
           args:
             [
               "-c",
-              "npm run start:container -w services/secret-service",
+              "npm run start:container -w ${OIH_ROOT}/secret-service",
             ]
           workingDir: /usr/src/app
           ports:
@@ -71,7 +71,7 @@ spec:
           volumeMounts:
             - name: code
               mountPath: /usr/src/app
-              #subPath: services/secret-service
+              #subPath: ${OIH_ROOT}/secret-service
           livenessProbe:
             httpGet:
               port: 3000
