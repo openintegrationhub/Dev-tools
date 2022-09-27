@@ -32,7 +32,7 @@ spec:
                   key: dataHubMongourl
             - name: PORT
               value: "1234"
-            - name: "OIH_ROOT"
+            - name: OIH_ROOT
               value: "OIH_ROOT"  
             - name: IAM_TOKEN
               valueFrom:

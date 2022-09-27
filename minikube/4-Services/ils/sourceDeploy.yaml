@@ -22,7 +22,7 @@ spec:
           ports:
             - containerPort: 3003
           env:
-            - name: "OIH_ROOT"
+            - name: OIH_ROOT
               value: "OIH_ROOT"  
             - name: MONGODB_URL
               valueFrom:

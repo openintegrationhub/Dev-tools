@@ -39,7 +39,7 @@ spec:
                   key: iamtoken
             - name: LOG_LEVEL
               value: trace
-            - name: "OIH_ROOT"
+            - name: OIH_ROOT
               value: "OIH_ROOT"  
             - name: NODE_ENV
               value: development

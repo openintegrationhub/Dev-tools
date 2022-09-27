@@ -39,7 +39,7 @@ spec:
                   key: iamtoken
             - name: LISTEN_PORT
               value: "1234"
-            - name: "OIH_ROOT"
+            - name: OIH_ROOT
               value: "OIH_ROOT"  
             - name: LOG_LEVEL
               value: trace

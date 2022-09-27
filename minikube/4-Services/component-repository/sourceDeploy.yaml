@@ -32,7 +32,7 @@ spec:
                   key: componentRepoMongourl
             - name: PORT
               value: "1234"
-            - name: "OIH_ROOT"
+            - name: OIH_ROOT
               value: "OIH_ROOT"  
             - name: RABBITMQ_URI
               value: >-
