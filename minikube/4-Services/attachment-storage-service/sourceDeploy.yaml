@@ -22,7 +22,7 @@ spec:
         - name: attachment-storage-service
           image: node:16-alpine #openintegrationhub/iam:latest #
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w $(OIH_ROOT)//attachment-storage-service"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/attachment-storage-service"]
           workingDir: /usr/src/app/
           env:
             - name: REDIS_CONFIG
