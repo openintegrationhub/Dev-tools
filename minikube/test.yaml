@@ -1,0 +1,30 @@
+version: '1'
+kind: Deployment
+metadata:
+  name: app-directory
+  namespace: oih-dev-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-directory
+  template:
+    metadata:
+      labels:
+        app: app-directory
+    spec:
+      containers:
+      - name: main
+        image: alpine
+        command:
+        - sh
+        - -c
+        - 'echo "Hostname is $HOSTNAME."; sleep infinity'
+      ports:
+            - containerPort: 3000
+      volumes:
+        - name: code
+          persistentVolumeClaim:
+            claimName: source-volume-claim
+  minReadySeconds: 10
+  revisionHistoryLimit: 2
