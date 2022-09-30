@@ -23,7 +23,7 @@ spec:
         - name: component-orchestrator
           image: node:16-alpine #openintegrationhub/iam:latest #
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/component-orchestrator"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/component-orchestrator"]
           workingDir: /usr/src/app/
           env:
             - name: COMPONENT_REPOSITORY_BASE_URL
@@ -39,6 +39,8 @@ spec:
                   key: iamtoken
             - name: LISTEN_PORT
               value: "1234"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: LOG_LEVEL
               value: trace
             - name: NODE_ENV

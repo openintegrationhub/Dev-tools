@@ -20,7 +20,7 @@ spec:
           args:
             [
               "-c",
-              "npm run start:container -w ${OIH_ROOT}/secret-service",
+              "npm run start:container -w $(OIH_ROOT)/secret-service",
             ]
           workingDir: /usr/src/app
           ports:
@@ -52,6 +52,8 @@ spec:
               value: "http://iam.oih-dev-ns.svc.cluster.local:3099/api/v1/tokens/introspect"
             - name: PORT
               value: "3000"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: API_BASE
               value: "/api/v1"
             - name: LOG_LEVEL
@@ -71,7 +73,7 @@ spec:
           volumeMounts:
             - name: code
               mountPath: /usr/src/app
-              #subPath: ${OIH_ROOT}/secret-service
+              #subPath: $(OIH_ROOT)/secret-service
           livenessProbe:
             httpGet:
               port: 3000

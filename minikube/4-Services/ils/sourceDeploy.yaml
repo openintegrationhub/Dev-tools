@@ -17,11 +17,13 @@ spec:
         - name: ils
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/ils"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/ils"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3003
           env:
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: MONGODB_URL
               valueFrom:
                 secretKeyRef:

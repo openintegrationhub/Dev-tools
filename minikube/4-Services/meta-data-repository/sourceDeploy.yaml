@@ -17,7 +17,7 @@ spec:
         - name: meta-data-repository
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/meta-data-repository"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/meta-data-repository"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3000
@@ -34,6 +34,8 @@ spec:
                   key: metaDataMongourl
             - name: "INTROSPECT_TYPE"
               value: "basic"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: RABBITMQ_URI
               value: amqp://guest:guest@rabbitmq-service.oih-dev-ns.svc.cluster.local:5672
             - name: "INTROSPECT_ENDPOINT_BASIC"

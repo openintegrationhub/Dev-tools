@@ -17,7 +17,7 @@ spec:
         - name: dispatcher-service
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/dispatcher-service"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/dispatcher-service"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3013
@@ -34,6 +34,8 @@ spec:
                   key: "iamtoken"
             - name: "INTROSPECT_TYPE"
               value: "basic"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: "INTROSPECT_ENDPOINT_BASIC"
               value: "http://iam.oih-dev-ns.svc.cluster.local:3099/api/v1/tokens/introspect"
             - name: "QUEUE_URL"

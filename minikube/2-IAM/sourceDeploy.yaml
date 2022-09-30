@@ -17,7 +17,7 @@ spec:
         - name: iam
           image: node:16-alpine #openintegrationhub/iam:latest #
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/iam"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/iam"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3099
@@ -41,6 +41,8 @@ spec:
               value: "http://localhost:3000,example.com,127.0.0.1,.oih-dev-ns.svc.cluster.local"
             - name: NODE_ENV
               value: development
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: IAM_JWT_SECRET
               valueFrom:
                 secretKeyRef:

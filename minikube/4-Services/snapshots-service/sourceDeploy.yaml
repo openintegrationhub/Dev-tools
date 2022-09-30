@@ -22,7 +22,7 @@ spec:
         - name: snapshots-service
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/snapshots-service"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/snapshots-service"]
           workingDir: /usr/src/app/
           env:
             - name: LOG_LEVEL
@@ -46,6 +46,8 @@ spec:
                 amqp://guest:guest@rabbitmq-service.oih-dev-ns.svc.cluster.local
             - name: PORT
               value: "1234"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: LOG_LEVEL
               value: trace
           resources:

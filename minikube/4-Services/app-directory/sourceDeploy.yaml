@@ -17,7 +17,7 @@ spec:
         - name: app-directory
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/app-directory"]
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/app-directory"]
           workingDir: /usr/src/app/
           ports:
             - containerPort: 3000
@@ -34,6 +34,8 @@ spec:
                   key: "appDirectoryMongourl"
             - name: "INTROSPECT_TYPE"
               value: "basic"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: "INTROSPECT_ENDPOINT_BASIC"
               value: "http://iam.oih-dev-ns.svc.cluster.local:3099/api/v1/tokens/introspect"
             - name: ORIGIN_WHITELIST

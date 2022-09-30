@@ -23,8 +23,8 @@ spec:
         - name: webhooks
           image: node:16-alpine
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:container -w ${OIH_ROOT}/webhooks"]
-          #npm ci --verbose --non-interactive -w ${OIH_ROOT}/webhooks &&
+          args: ["-c", "npm run start:container -w $(OIH_ROOT)/webhooks"]
+          #npm ci --verbose --non-interactive -w $(OIH_ROOT)/webhooks &&
           workingDir: /usr/src/app/
           env:
             - name: IAM_TOKEN
@@ -39,6 +39,8 @@ spec:
                   key: webhooksMongourl
             - name: "INTROSPECT_TYPE" # - name: IAM_OIDC_SERVICE_CLIENT_ID
               value: "basic"
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: "INTROSPECT_ENDPOINT_BASIC"
               value: "http://iam.oih-dev-ns.svc.cluster.local:3099/api/v1/tokens/introspect"
             - name: RABBITMQ_URI
@@ -61,7 +63,7 @@ spec:
           volumeMounts:
             - name: code
               mountPath: /usr/src/app
-              #subPath: ${OIH_ROOT}/webhooks
+              #subPath: $(OIH_ROOT)/webhooks
           livenessProbe:
             httpGet:
               port: 1234
