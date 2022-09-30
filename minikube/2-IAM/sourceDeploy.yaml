@@ -41,6 +41,8 @@ spec:
               value: "http://localhost:3000,example.com,127.0.0.1,.oih-dev-ns.svc.cluster.local"
             - name: NODE_ENV
               value: development
+            - name: OIH_ROOT
+              value: "OIH_ROOT"  
             - name: IAM_JWT_SECRET
               valueFrom:
                 secretKeyRef:
